@@ -1,0 +1,149 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Build CRUD DataGrid with jQuery EasyUI - jQuery EasyUI Demo</title>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootmetro.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootmetro-responsive.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootmetro-icons.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootmetro-ui-light.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/datepicker.css">
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="./assets/js/modernizr-2.6.2.min.js"></script>
+
+        <script type="text/javascript">
+        $(document).on('change', '#file_button', function() {
+            $('#filename').val($(this).val().replace(/^.*\\/, ""));
+        })
+         </script>
+    </head></div>
+
+    <body>
+    <div class="container" style="width:740px">
+    <div class="row">
+
+        <h2>New upload</h2>
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+            action="/upload">
+            <input id="file_button" type="file" name="csv" style="margin:0%"><input id="filename" type="text" readonly value="" style="width:500px;margin:0%"></input>
+        <input type="submit"></input>
+        </form>
+    </div>
+    </div>
+    <br/>
+        <div class="container">
+            <div class="row">
+               <div class="span12">
+                  <h3>uploadされたファイル</h3>
+
+                  <div class="row">
+                     <div class="span12">
+
+                        <table class="table table-condensed table-hover">
+                           <thead>
+                           <tr>
+                              <th class="span1">Editable<br/>Checkboxes</th>
+                              <th class="span1">Readonly<br/>Checkboxes</th>
+                              <th>fileName</th>
+                              <th>uploadDate</th>
+                              <th>action</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                            <% fileList.forEach(function(file) { %>
+                              <tr>
+                                 <td class="align-center" style="vertical-align:middle">
+                                    <label class="checkbox">
+                                       <input type="checkbox"><span class="metro-checkbox"></span>
+                                    </label>
+                                 </td>
+                                 <td class="align-center" style="vertical-align:middle">
+                                    <i class="icon-checkmark-2"></i>
+                                 </td>
+                                 <td style="vertical-align:middle"><%= file['dispName'] %>　(<%= file['hash'] %>)　</td>
+                                 <td style="vertical-align:middle"><%= file['createTime'] %></td>
+                                 <td>
+                                    <%-'<a href="/execbatch?filename='+ file['hash'] + '" target="_self">' %>
+                                     <button class="win-command">
+                                        <span class="win-commandicon win-commandring icon-cloud-download"></span>
+                                     </button>
+                                    </a>
+                                </td>
+                              </tr>
+                              <% }); %>
+                           </tbody>
+                        </table>
+
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+<!--
+         <footer class="win-ui-dark win-commandlayout navbar-fixed-bottom">
+            <div class="container">
+               <div class="row">
+                  <div class="span6 align-left">
+                     <button class="win-command">
+                        <span class="win-commandicon win-commandring icon-search-2"></span>
+                        <span class="win-label">Cerca</span>
+                     </button>
+
+                     <hr class="win-command" />
+
+                     <button class="win-command">
+                        <span class="win-commandicon win-commandring icon-reload"></span>
+                        <span class="win-label">Reload</span>
+                     </button>
+
+                     <button class="win-command">
+                        <span class="win-commandicon win-commandring icon-email"></span>
+                        <span class="win-label">Send Email</span>
+                     </button>
+                  </div>
+                  <div class="span6 align-right">
+                     <button class="win-command">
+                        <span class="win-commandicon win-commandring icon-remove"></span>
+                        <span class="win-label">Delete</span>
+                     </button>
+
+                     <button class="win-command">
+                        <span class="win-commandicon win-commandring icon-plus-2"></span>
+                        <span class="win-label">Add</span>
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </footer>
+        -->
+         <div id="charms" class="win-ui-dark slide">
+
+            <div id="theme-charms-section" class="charms-section">
+               <div class="charms-header">
+                  <a href="#" class="close-charms win-backbutton"></a>
+                  <h2>Settings</h2>
+               </div>
+
+               <div class="row-fluid">
+                  <div class="span12">
+
+                     <form class="">
+                        <label for="win-theme-select">Change theme:</label>
+                        <select id="win-theme-select" class="">
+                           <option value="metro-ui-light">Light</option>
+                           <option value="metro-ui-dark">Dark</option>
+                        </select>
+                     </form>
+
+                  </div>
+               </div>
+            </div>
+
+         </div>
+    </body>
+    </html>

@@ -6,11 +6,44 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "JSONStream": "^1.3.4",
+    "amazon-product-api": "^0.4.4",
+    "batch": "^0.6.1",
+    "bootstrap": "^4.1.3",
+    "child_process": "^1.0.2",
     "cookie-parser": "~1.4.3",
+    "csv": "^3.1.0",
+    "csvtojson": "^2.0.8",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
+    "electron": "^3.0.0",
+    "electron-json-storage": "^4.1.2",
     "express": "~4.16.0",
+    "fs-extra": "^7.0.0",
     "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
-  }
+    "jquery": "^1.9.1",
+    "jschardet": "^1.6.0",
+    "json2csv": "^4.2.1",
+    "morgan": "~1.9.0",
+    "multer": "^1.3.1",
+    "nedb": "^1.8.0",
+    "popper": "^1.0.1",
+    "request": "^2.88.0",
+    "sass": "^1.14.1",
+    "style": "0.0.3"
+  },
+  "main": "main.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sentangit/tanakaz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sentangit/tanakaz/issues"
+  },
+  "homepage": "https://github.com/sentangit/tanakaz#readme",
+  "description": ""
 }

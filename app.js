@@ -6,9 +6,14 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var uploadRouter = require('./routes/upload');
 var dataGridRouter = require('./routes/dataGrid');
+var batchCallRouter = require('./routes/batchCall');
+var preferencesRouter = require('./routes/preferences');
 
 var app = express();
+
+app.listen(3000, "127.0.0.1");// ←これを追加
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +27,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/test', indexRouter);
+app.use('/upload', uploadRouter);
+app.use('/upload/uploadBigDataTest', uploadRouter);
 app.use('/dataGrid', dataGridRouter);
+app.use('/execbatch', batchCallRouter);
+app.use('/preferences', preferencesRouter);
+app.use('/preferences/setDlpath', preferencesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

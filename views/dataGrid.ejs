@@ -13,18 +13,48 @@
     <body>
         <h2>CRUD DataGrid</h2>
         <p>Double click the row to begin editing.</p>
-        
-        <table id="dg" title="My Users" style="width:700px;height:250px"
+        <pre><%= title %></pre>
+        <input type="text" name="a" id="aa" value="<%= JSON.stringify(jsonData) %>">
+
+        <table id="dg" title="My Users" style="width:2000px;height:1000px"
                 toolbar="#toolbar" pagination="true" idField="id"
                 rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
                 <tr>
-                    <th field="firstname" width="50" editor="{type:'validatebox',options:{required:true}}">First Name</th>
-                    <th field="lastname" width="50" editor="{type:'validatebox',options:{required:true}}">Last Name</th>
-                    <th field="phone" width="50" editor="{type:'validatebox',options:{required:true}}">Phone</th>
-                    <th field="email" width="50" editor="{type:'validatebox',options:{required:true,validType:'email'}}">Email</th>
+                    <<th field="asin" width="50" editor="{type:'validatebox',options:{required:true}}">ASIN</th>
+                    <th field="sellers" width="50" editor="{type:'validatebox',options:{required:true}}">出品者数</th>
+                    <th field="minprice" width="50" editor="{type:'validatebox',options:{required:true}}">最安値[FBA]</th>
+                    <th field="minsip" width="50" editor="{type:'validatebox',options:{required:true}}">最安値[自社発送]送料</th>
+                    <th field="itemname" width="50" editor="{type:'validatebox',options:{required:true}}">商品名</th>
+                    <th field="itemw" width="50" editor="{type:'validatebox',options:{required:true}}">商品重量(kg)</th>
+                    <th field="maker" width="50" editor="{type:'validatebox',options:{required:true}}">メーカ名</th>
+                    <th field="productId" width="50" editor="{type:'validatebox',options:{required:true}}">メーカ型番</th>
+                    <th field="brandName" width="50" editor="{type:'validatebox',options:{required:true}}">ブランド名</th>
+                    <th field="platform" width="50" editor="{type:'validatebox',options:{required:true}}">プラットフォーム</th>
+                    <th field="pic1" width="50" editor="{type:'validatebox',options:{required:true}}">画像1[メイン]</th>
+                    <th field="pic2" width="50" editor="{type:'validatebox',options:{required:true}}">画像1[サムネイル]</th>
+                    <th field="salesrank" width="50" editor="{type:'validatebox',options:{required:true}}">最上位カテゴリセールスランク</th>
+                    <th field="itemgroup" width="50" editor="{type:'validatebox',options:{required:true}}">商品グループ</th>
+                    <th field="adultFlug" width="50" editor="{type:'validatebox',options:{required:true}}">アダルトフラグ</th>
                 </tr>
             </thead>
+            <tbody>
+                <% jsonData.forEach(function(json) { %>
+                    <tr>
+                        <% for(var test in json) { %>
+                        <td><%= json[test] %></td>
+                        <% }; %>
+                    </tr>
+                <% }); %>
+                <!--
+                <% jsonData.forEach(function(json) { %>
+                    <% var jobj = JSON.parse(JSON.stringify(json)) %>
+                    <tr>
+                        <td><%= jobj.firstname %></td><td><%= jobj.lastname %></td><td><%= jobj.phone %></td><td><%= jobj.email %></td>
+                    </tr>
+                <% }); %>
+                -->
+            </tbody>
         </table>
         <div id="toolbar">
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">New</a>
@@ -34,14 +64,19 @@
         </div>
         <script type="text/javascript">
             $(function(){
+
+            // expected output: 42
+            var t = JSON.parse($("#aa").val());
+
                 $('#dg').edatagrid({
-                    url: 'get_users.php',
-                    saveUrl: 'save_user.php',
-                    updateUrl: 'update_user.php',
-                    destroyUrl: 'destroy_user.php'
+                    data:'',
+                    url: '',
+                    saveUrl: '',
+                    updateUrl: '',
+                    destroyUrl: ''
                 });
             });
         </script>
-        
+
     </body>
     </html>

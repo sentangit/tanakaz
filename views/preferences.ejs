@@ -1,0 +1,37 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Preferences</title>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootmetro.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootmetro-responsive.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootmetro-icons.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootmetro-ui-light.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/datepicker.css">
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="./assets/js/modernizr-2.6.2.min.js"></script>
+
+    </head></div>
+
+    <body>
+    <div class="container" style="width:740px">
+    <div class="row">
+
+        <h2>Preferences</h2>
+        <form
+            method="POST"
+            action="/preferences/setDlpath">
+            現在の保存先
+            <p><%= config['dlPath'] %></p>
+            保存先を変更
+            <input id="dlPath" type="input" name="dlPath" style="margin:0%"></input>
+        <input type="submit"></input>
+        </form>
+        <a href="/" target="">TOPページへ戻る</a>
+    </div>
+    </div>
+    <br/>
+</body>
+</html>
